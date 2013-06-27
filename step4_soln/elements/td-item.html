@@ -1,0 +1,20 @@
+<element name="td-item" extends="li" attributes="item">
+	<link rel="stylesheet" href="td-item.css">
+	<template>
+		<div class="view {{completed: item.completed}}">
+			<input type="checkbox" class="toggle" checked="{{item.completed}}" on-click="itemChangeAction">
+			<label>{{item.title}}</label>
+			<button class="destroy" on-click="destroyAction"></button>
+		</div>
+	</template>
+	<script>
+		Polymer.register(this, {
+			itemChangeAction: function() {
+				this.fire('td-item-changed');
+			},
+			destroyAction: function() {
+				this.fire('td-destroy-item', this.item);
+			}
+		});
+	</script>
+</element>

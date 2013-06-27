@@ -1,0 +1,30 @@
+<!-- 
+TODO:
+1. Modify <div class="view completed"> so  that the "completed" CSS class is
+   applied when the item is complete.
+2. Check the toggle checkbox when the item is complete.
+3. Add an on-click handler to the checkbox that calls itemChangeAction().
+   - itemChangeAction() should fire the "td-item-changed" event.
+4. Add an on-click handler to <button class="destroy"> that calls destroyAction().
+-->
+
+<element name="td-item" extends="li" attributes="item">
+	<link rel="stylesheet" href="td-item.css">
+	<template>
+		<div class="view completed">
+			<input type="checkbox" class="toggle">
+			<label>{{item.title}}</label>
+			<button class="destroy"></button>
+		</div>
+	</template>
+	<script>
+		Polymer.register(this, {
+			itemChangeAction: function() {
+				// TODO: fire the 'td-item-changed' event.
+			},
+			destroyAction: function() {
+				this.fire('td-destroy-item', this.item);
+			}
+		});
+	</script>
+</element>

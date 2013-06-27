@@ -1,0 +1,18 @@
+<element name="td-todos">
+  <link rel="stylesheet" href="td-todos.css">
+  <template>
+    <section id="todoapp">
+      <header id="header">
+        <input id="new-todo" placeholder="What needs to be done?" autofocus>
+      </header>
+      <section id="main">
+        <ul id="todo-list">
+          <li is="td-item"></li>
+        </ul>
+      </section>
+    </section>
+  </template>
+  <script>
+    Polymer.register(this);
+  </script>
+</element>

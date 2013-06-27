@@ -1,0 +1,38 @@
+<link rel="import" href="td-item.html">
+<link rel="import" href="td-model.html">
+
+<element name="td-todos">
+  <link rel="stylesheet" href="td-todos.css">
+  <template>
+    <td-model id="model" items="{{items}}"></td-model>
+    <section id="todoapp">
+      <header id="header">
+        <input id="new-todo" placeholder="What needs to be done?" autofocus on-keyup="keyAction">
+      </header>
+      <section id="main">
+        <ul id="todo-list">
+          <template repeat="{{items}}">
+            <li is="td-item" item="{{}}"></li>
+          </template>
+        </ul>
+      </section>
+    </section>
+  </template>
+  <script>
+    var ENTER_KEY = 13;
+    var ESC_KEY = 27;
+    Polymer.register(this, {
+      keyAction: function(e, detail, sender) {
+        switch (e.keyCode) {
+          case ENTER_KEY:
+            this.$.model.newItem(sender.value);
+            // when polyfilling Object.observe, make sure we update immediately
+            Platform.flush();
+          case ESC_KEY: 
+            sender.value = '';
+            break;
+        }
+      }
+    });
+  </script>
+</element>

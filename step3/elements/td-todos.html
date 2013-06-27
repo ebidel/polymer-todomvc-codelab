@@ -1,0 +1,58 @@
+<!-- TODO
+1. Import td-model.html
+2. Declare <td-model> in the markup. Bind a property called items to it's items attribute.
+3. Create an MDV <template> that stamps out the list of <li is="todo-item">
+4. Add an on-* handler on #new-todo that calls keyAction() on the keyup event.
+5. Create a new todo when the user hits enter on the text box.
+-->
+
+<link rel="import" href="td-item.html">
+
+<element name="td-todos">
+  <link rel="stylesheet" href="td-todos.css">
+  <template>
+
+    <!--
+      TODO: Declare <td-model>
+    -->
+
+    <section id="todoapp">
+      <header id="header">
+        <input id="new-todo" placeholder="What needs to be done?" autofocus>
+      </header>
+      <section id="main">
+        <ul id="todo-list">
+          <!--
+            TODO:
+            Build a <template> that repeats over the "items" property of <td-model>.
+             - Each iteration should render a <li is="td-item"></li>.
+             - On each <li>, bind an attribute named "item" to each iteration's current value.
+          -->
+        </ul>
+      </section>
+    </section>
+  </template>
+  <script>
+    var ENTER_KEY = 13;
+    var ESC_KEY = 27;
+    Polymer.register(this, {
+      keyAction: function(e, detail, sender) {
+        switch (e.keyCode) {
+          case ENTER_KEY:
+
+            // TODO ------------------------------------------------------------
+            // 3. Create a new todo.
+            // Hint: Call <td-model>'s newItem() method. Use automatic node
+            // finding (http://www.polymer-project.org/polymer.html#automatic-node-finding)
+            // to fetch <td-model> from the DOM.
+            // -----------------------------------------------------------------
+
+            Platform.flush();
+          case ESC_KEY: 
+            sender.value = '';
+            break;
+        }
+      }
+    });
+  </script>
+</element>
