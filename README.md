@@ -1,7 +1,7 @@
 ## Polymer TodoMVC Codelab
 
 This is a codelab walkthrough of the [Polymer TodoMVC](http://todomvc.com/architecture-examples/polymer/).
-The actual app code can be found at [https://github.com/Polymer/todomvc/].
+The actual app code can be found at https://github.com/Polymer/todomvc/.
 
 ### Instructions
 
