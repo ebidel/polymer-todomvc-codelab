@@ -15,4 +15,4 @@ The actual app code can be found at https://github.com/Polymer/todomvc/.
 
         git clone git@github.com:ebidel/polymer-todomvc-codelab.git codelab
     
-4. Start the [codelab](http://goo.gl/lwrKK) (http://goo.gl/lwrKK)!
+4. If you start a web server in the `todomvc` folder, open [ http://localhost:PORT/codelab/](http://localhost:<PORT>/codelab/). The codelab resources are there. Alternatively, you can read through it at http://goo.gl/lwrKK.
