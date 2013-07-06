@@ -1,0 +1,30 @@
+application: polymer-todomvc
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+
+- url: /codelab/?$
+  static_files: codelab/index.html
+  upload: codelab/index\.html
+
+- url: /app
+  static_dir: app
+
+- url: /codelab/(.*)/$
+  static_files: codelab/\1/index.html
+  upload: codelab/\1/index.html
+
+- url: /codelab
+  static_dir: codelab
+
+- url: /components
+  static_dir: components
+
+- url: /elements
+  static_dir: elements
+
+- url: /lib-elements
+  static_dir: lib-elements
