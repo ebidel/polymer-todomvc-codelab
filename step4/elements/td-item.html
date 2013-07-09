@@ -9,22 +9,22 @@ TODO:
 -->
 
 <element name="td-item" extends="li" attributes="item">
-	<link rel="stylesheet" href="td-item.css">
-	<template>
-		<div class="view completed">
-			<input type="checkbox" class="toggle">
-			<label>{{item.title}}</label>
-			<button class="destroy"></button>
-		</div>
-	</template>
-	<script>
-		Polymer.register(this, {
-			itemChangeAction: function() {
-				// TODO: fire the 'td-item-changed' event.
-			},
-			destroyAction: function() {
-				this.fire('td-destroy-item', this.item);
-			}
-		});
-	</script>
+  <link rel="stylesheet" href="td-item.css">
+  <template>
+    <div class="view completed">
+      <input type="checkbox" class="toggle">
+      <label>{{item.title}}</label>
+      <button class="destroy"></button>
+    </div>
+  </template>
+  <script>
+    Polymer.register(this, {
+      itemChangeAction: function() {
+        // TODO: fire the 'td-item-changed' event.
+      },
+      destroyAction: function() {
+        this.fire('td-destroy-item', this.item);
+      }
+    });
+  </script>
 </element>
