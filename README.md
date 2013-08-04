@@ -15,7 +15,7 @@ The actual app code can be found at https://github.com/Polymer/todomvc/.
 
         git clone git@github.com:ebidel/polymer-todomvc-codelab.git codelab
 
-3. (Optional) If you're using App Engine, move `codelab/app.yaml` into this directory.
+3. (Optional) If you're using App Engine, move `codelab/app.yaml` into this directory:
 
         mv codelab/app.yaml .
 
