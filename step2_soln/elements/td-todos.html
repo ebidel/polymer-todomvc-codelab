@@ -1,6 +1,6 @@
 <link rel="import" href="td-item.html">
 
-<element name="td-todos">
+<polymer-element name="td-todos">
   <link rel="stylesheet" href="td-todos.css">
   <template>
     <section id="todoapp">
@@ -15,6 +15,9 @@
     </section>
   </template>
   <script>
-    Polymer.register(this);
+    Polymer('td-todos', {
+      ready: function() {
+      }
+    });
   </script>
-</element>
+</polymer-element>

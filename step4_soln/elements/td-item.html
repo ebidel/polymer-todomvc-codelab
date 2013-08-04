@@ -1,4 +1,4 @@
-<element name="td-item" extends="li" attributes="item">
+<polymer-element name="td-item" extends="li" attributes="item">
   <link rel="stylesheet" href="td-item.css">
   <template>
     <div class="view {{completed: item.completed}}">
@@ -8,7 +8,7 @@
     </div>
   </template>
   <script>
-    Polymer.register(this, {
+    Polymer('td-item', {
       itemChangeAction: function() {
         this.fire('td-item-changed');
       },
@@ -17,4 +17,4 @@
       }
     });
   </script>
-</element>
+</polymer-element>

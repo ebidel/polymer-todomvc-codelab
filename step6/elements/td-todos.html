@@ -6,14 +6,22 @@ TODO
 -->
 
 <!-- TODO: Import  polymer-localstorage.html -->
+<!-- Added by Priyank-->
+<link rel="import" href="../../../lib-elements/polymer-localstorage.html">
+<!-- Added by Priyank-->
+
 <link rel="import" href="td-item.html">
 <link rel="import" href="td-model.html">
 
-<element name="td-todos">
+<polymer-element name="td-todos">
   <link rel="stylesheet" href="td-todos.css">
   <template>
     <!-- TODO: Declare <polymer-localstorage> -->
-    <td-model id="model" items="{{items}}" on-td-model-changed="modelChangedAction"></td-model>
+    <!-- Added by Priyank-->
+	<polymer-localstorage id="storage" name="todos-polymer" value="{{items}}"></polymer-localstorage>
+    <!-- Added by Priyank-->
+
+	<td-model id="model" items="{{items}}" on-td-model-changed="modelChangedAction"></td-model>
     <section id="todoapp">
       <header id="header">
         <input id="new-todo" placeholder="What needs to be done?" autofocus on-keyup="keyAction">
@@ -37,7 +45,7 @@ TODO
   <script>
     var ENTER_KEY = 13;
     var ESC_KEY = 27;
-    Polymer.register(this, {
+    Polymer('td-todos', {
       keyAction: function(e, detail, sender) {
         switch (e.keyCode) {
           case ENTER_KEY:
@@ -51,6 +59,9 @@ TODO
       },
       modelChangedAction: function() {
         // TODO: call <polymer-localstorage>'s save method.
+		/*Added by Priyank*/
+		this.$.storage.save();
+		/*Added by Priyank*/
       },
       itemChangedAction: function() {
         this.$.model.itemsChanged();
@@ -67,4 +78,4 @@ TODO
     });
   </script>
 
-</element>
+</polymer-element>

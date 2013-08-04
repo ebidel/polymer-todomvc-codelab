@@ -4,7 +4,7 @@
   2. Bind innerText of <label> to item.title.
 -->
 
-<element name="td-item" extends="li">
+<polymer-element name="td-item" extends="li">
   <link rel="stylesheet" href="td-item.css">
   <template>
     <div class="view">
@@ -14,6 +14,10 @@
     </div>
   </template>
   <script>
-    Polymer.register(this);
+    Polymer('td-item', {
+	ready: function() {
+		
+	}
+});
   </script>
-</element>
+</polymer-element>
