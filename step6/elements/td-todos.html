@@ -6,20 +6,14 @@ TODO
 -->
 
 <!-- TODO: Import  polymer-localstorage.html -->
-<!-- Added by Priyank-->
-<link rel="import" href="../../../lib-elements/polymer-localstorage.html">
-<!-- Added by Priyank-->
 
 <link rel="import" href="td-item.html">
 <link rel="import" href="td-model.html">
 
 <polymer-element name="td-todos">
-  <link rel="stylesheet" href="td-todos.css">
   <template>
+	<link rel="stylesheet" href="td-todos.css">
     <!-- TODO: Declare <polymer-localstorage> -->
-    <!-- Added by Priyank-->
-	<polymer-localstorage id="storage" name="todos-polymer" value="{{items}}"></polymer-localstorage>
-    <!-- Added by Priyank-->
 
 	<td-model id="model" items="{{items}}" on-td-model-changed="modelChangedAction"></td-model>
     <section id="todoapp">
@@ -59,9 +53,6 @@ TODO
       },
       modelChangedAction: function() {
         // TODO: call <polymer-localstorage>'s save method.
-		/*Added by Priyank*/
-		this.$.storage.save();
-		/*Added by Priyank*/
       },
       itemChangedAction: function() {
         this.$.model.itemsChanged();

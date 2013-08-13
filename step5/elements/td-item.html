@@ -11,8 +11,8 @@ TODO
 -->
 
 <polymer-element name="td-item" extends="li" attributes="item">
-  <link rel="stylesheet" href="td-item.css">
   <template>
+	<link rel="stylesheet" href="td-item.css">
     <div class="view {{completed: item.completed;}}">
       <input type="checkbox" class="toggle" checked="{{item.completed}}" on-click="itemChangeAction">
       <label>{{item.title}}</label>
