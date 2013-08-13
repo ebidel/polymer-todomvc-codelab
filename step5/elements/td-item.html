@@ -10,9 +10,9 @@ TODO
   <input id="edit" class="edit" value="{{title}}" hidden?="{{!editing}}" on-keyup="keyAction">
 -->
 
-<element name="td-item" extends="li" attributes="item">
-  <link rel="stylesheet" href="td-item.css">
+<polymer-element name="td-item" extends="li" attributes="item">
   <template>
+	<link rel="stylesheet" href="td-item.css">
     <div class="view {{completed: item.completed;}}">
       <input type="checkbox" class="toggle" checked="{{item.completed}}" on-click="itemChangeAction">
       <label>{{item.title}}</label>
@@ -22,7 +22,7 @@ TODO
   <script>
     var ENTER_KEY = 13;
     var ESC_KEY = 27;
-    Polymer.register(this, {
+    Polymer('td-item', {
       editing: false,
       keyAction: function(e) {
         switch (e.keyCode) {
@@ -63,4 +63,4 @@ TODO
       }
     });
   </script>
-</element>
+</polymer-element>

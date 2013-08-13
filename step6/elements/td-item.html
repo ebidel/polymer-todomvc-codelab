@@ -1,6 +1,6 @@
-<element name="td-item" extends="li" attributes="item editing" on-blur="commitAction">
-  <link rel="stylesheet" href="td-item.css">
+<polymer-element name="td-item" extends="li" attributes="item editing" on-blur="commitAction">
   <template>
+	<link rel="stylesheet" href="td-item.css">
     <div class="view {{completed: item.completed; editing: editing}}" hidden?="{{editing}}" on-dblclick="editAction">
       <input type="checkbox" class="toggle" checked="{{item.completed}}" on-click="itemChangeAction">
       <label>{{item.title}}</label>
@@ -11,7 +11,7 @@
   <script>
     var ENTER_KEY = 13;
     var ESC_KEY = 27;
-    Polymer.register(this, {
+    Polymer('td-item', {
       editing: false,
       keyAction: function(e) {
         switch (e.keyCode) {
@@ -52,4 +52,4 @@
       }
     });
   </script>
-</element>
+</polymer-element>

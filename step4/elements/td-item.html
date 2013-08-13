@@ -8,9 +8,9 @@ TODO:
 4. Add an on-click handler to <button class="destroy"> that calls destroyAction().
 -->
 
-<element name="td-item" extends="li" attributes="item">
-  <link rel="stylesheet" href="td-item.css">
+<polymer-element name="td-item" extends="li" attributes="item">
   <template>
+	<link rel="stylesheet" href="td-item.css">
     <div class="view completed">
       <input type="checkbox" class="toggle">
       <label>{{item.title}}</label>
@@ -18,7 +18,7 @@ TODO:
     </div>
   </template>
   <script>
-    Polymer.register(this, {
+    Polymer('td-item', {
       itemChangeAction: function() {
         // TODO: fire the 'td-item-changed' event.
       },
@@ -27,4 +27,4 @@ TODO:
       }
     });
   </script>
-</element>
+</polymer-element>
