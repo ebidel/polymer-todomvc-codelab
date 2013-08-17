@@ -1,6 +1,6 @@
-<element name="td-item" extends="li" attributes="item">
-  <link rel="stylesheet" href="td-item.css">
+<polymer-element name="td-item" extends="li" attributes="item">
   <template>
+  <link rel="stylesheet" href="td-item.css">
     <div class="view {{completed: item.completed}}">
       <input type="checkbox" class="toggle" checked="{{item.completed}}" on-click="itemChangeAction">
       <label>{{item.title}}</label>
@@ -8,7 +8,7 @@
     </div>
   </template>
   <script>
-    Polymer.register(this, {
+    Polymer('td-item', {
       itemChangeAction: function() {
         this.fire('td-item-changed');
       },
@@ -17,4 +17,4 @@
       }
     });
   </script>
-</element>
+</polymer-element>

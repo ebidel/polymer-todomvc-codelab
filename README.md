@@ -10,12 +10,12 @@ The actual app code can be found at https://github.com/Polymer/todomvc/.
         git clone git@github.com:Polymer/todomvc.git
         cd todomvc
     
-2. Run `bower update` to pull in the dependencies. If you don't have Node or Bower isntalled, follow the installation instructions in the [README](https://github.com/Polymer/todomvc/blob/master/README.md).
+2. Run `bower update` to pull in the dependencies. If you don't have Node or Bower installed, follow the installation instructions in the [README](https://github.com/Polymer/todomvc/blob/master/README.md).
 3. Inside of the `todomvc` folder, clone this repository at "codelab":
 
         git clone git@github.com:ebidel/polymer-todomvc-codelab.git codelab
 
-3. (Optional) If you're using App Engine, move `codelab/app.yaml` into this directory.
+3. (Optional) If you're using App Engine, move `codelab/app.yaml` into this directory:
 
         mv codelab/app.yaml .
 

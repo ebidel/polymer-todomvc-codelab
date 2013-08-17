@@ -1,23 +1,26 @@
 <!-- TODO
-1. Import td-model.html
-2. Declare <td-model> in the markup. Bind a property called items to it's items attribute.
-3. Create an MDV <template> that stamps out the list of <li is="todo-item">
-4. Add an on-* handler on #new-todo that calls keyAction() on the keyup event.
+1. Publish a property "modelId" in the attributes attribute.
+2. Create an MDV <template> that stamps out the list of <li is="todo-item">
+3. Use an HTML import to bring in td-input.html
+4. Update <input id="new-todo"> so it "is" a <td-input>.
 5. Create a new todo when the user hits enter on the text box.
+6. Fill in addTodoAction()
+7. 
+   On <input id="new-todo"> add an on-* handler for the following events:
+   - "td-input-commit", calls addTodoAction()
+   - "td-input-cancel", calls cancelAddTodoAction()
 -->
 
+<!-- TODO: Import td-input.html -->
 <link rel="import" href="td-item.html">
 
-<element name="td-todos">
-  <link rel="stylesheet" href="td-todos.css">
+<!-- TODO: Publish "modelId" -->
+<polymer-element name="td-todos">
   <template>
-
-    <!--
-      TODO: Declare <td-model>
-    -->
-
+  <link rel="stylesheet" href="td-todos.css">
     <section id="todoapp">
       <header id="header">
+        <!-- TODO: make this a input a specialized <td-input>. -->
         <input id="new-todo" placeholder="What needs to be done?" autofocus>
       </header>
       <section id="main">
@@ -35,24 +38,25 @@
   <script>
     var ENTER_KEY = 13;
     var ESC_KEY = 27;
-    Polymer.register(this, {
-      keyAction: function(e, detail, sender) {
-        switch (e.keyCode) {
-          case ENTER_KEY:
+    Polymer('td-todos', {
+      modelIdChanged: function() {
+        this.model = document.querySelector('#' + this.modelId);
+      },
+      addTodoAction: function() {
+        // TODO ------------------------------------------------------------
+        // Create a new todo by using <td-model>'s newItem() method.
+        // Pass it <input id="new-todo">.value,
+        // Hint: Use automatic node finding
+        // (http://www.polymer-project.org/polymer.html#automatic-node-finding)
+        // to fetch <input id="new-todo"> from the DOM.
+        // -----------------------------------------------------------------
 
-            // TODO ------------------------------------------------------------
-            // 3. Create a new todo.
-            // Hint: Call <td-model>'s newItem() method. Use automatic node
-            // finding (http://www.polymer-project.org/polymer.html#automatic-node-finding)
-            // to fetch <td-model> from the DOM.
-            // -----------------------------------------------------------------
-
-            Platform.flush();
-          case ESC_KEY: 
-            sender.value = '';
-            break;
-        }
+        Platform.flush();
+        this.$['new-todo'].value = '';
+      },
+      cancelAddTodoAction: function() {
+        this.$['new-todo'].value = '';
       }
     });
   </script>
-</element>
+</polymer-element>

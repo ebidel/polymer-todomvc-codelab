@@ -1,66 +1,75 @@
 <!--
 TODO
 1. Using the attributes attribute, include another published property: "editing".
-2. Add a on-blur handler on the <element> that calls commitAction().
+2. Add a on-blur handler on the <polymer-element> that calls commitAction().
 3. Modify <div class="view {{completed: item.completed;}}">:
-   - update the conditional expression for class so "editing" is also applied when the element's editing property is true: class="view {{completed: item.completed; editing: editing}}">
-  - Conditionally apply the hidden attribute if the editing property is true.
-  - Add a on-dblclick="editAction" to the element.
-- At the bottom of the <template>, add an input for editing:
-  <input id="edit" class="edit" value="{{title}}" hidden?="{{!editing}}" on-keyup="keyAction">
+   - update the conditional expression for class so "editing" is also applied
+     when the element's editing property is true.
+   - conditionally apply the hidden attribute if the "editing" property is true.
+   - add a on-dblclick="editAction" to the element.
+4. At the bottom of the <template>, add an td-input for editing.
+5. Use an HTML Import to import td-input.html
 -->
 
-<element name="td-item" extends="li" attributes="item">
-  <link rel="stylesheet" href="td-item.css">
+<!-- TODO: import td-input.html -->
+
+<!-- TODO: publish and "editing" property -->
+<!-- TODO: add an on-blur handler that calls commitAction() -->
+<polymer-element name="td-item" extends="li" attributes="item">
   <template>
+  <link rel="stylesheet" href="td-item.css">
+    <!-- TODO: Dynamically apply the "editing" class and conditionally hide this
+               element when "editing" == true -->
+    <!-- TODO: add on-dblclick="editAction" -->
     <div class="view {{completed: item.completed;}}">
       <input type="checkbox" class="toggle" checked="{{item.completed}}" on-click="itemChangeAction">
       <label>{{item.title}}</label>
       <button class="destroy" on-click="destroyAction"></button>
     </div>
+    <!-- TODO: Add <input is="td-input"> -->
   </template>
   <script>
-    var ENTER_KEY = 13;
-    var ESC_KEY = 27;
-    Polymer.register(this, {
-      editing: false,
-      keyAction: function(e) {
-        switch (e.keyCode) {
-          case ESC_KEY:
-            this.cancelAction();
-            break;
-          case ENTER_KEY:
-            this.commitAction();
-            break;
-        }
-      },
-      editAction: function() {
-        this.editing = true;
-        this.title = this.item.title;
-        // schedule focus for the end of microtask, when the input will be visible
-        Platform.flush();
-        this.asyncMethod(function() {
-          this.$.edit.focus();
-        });
-      },
-      commitAction: function() {
-        if (this.editing) {
-          this.editing = false;
-          this.item.title = this.title.trim();
-          if (this.item.title === '') {
-            this.destroyAction();
+    (function() {
+      var ENTER_KEY = 13;
+      var ESC_KEY = 27;
+      Polymer('td-item', {
+        editing: false,
+        editAction: function() {
+          this.editing = true;
+          // FIXME: Custom elements extended from <input> don't have
+          // <input> binding behavior.
+          // https://github.com/Polymer/polymer/issues/186
+          this.$.edit.value = this.title = this.item.title;
+          // schedule focus for the end of microtask, when the input will be visible
+          Platform.flush();
+          this.asyncMethod(function() {
+            this.$.edit.focus();
+          });
+        },
+        commitAction: function() {
+          // FIXME: Custom elements extended from <input> don't have
+          // <input> binding behavior.
+          // https://github.com/Polymer/polymer/issues/186
+          this.title = this.$.edit.value;
+          if (this.editing) {
+            this.editing = false;
+            this.item.title = this.title.trim();
+            if (this.item.title === '') {
+              this.destroyAction();
+            }
+          this.fire('td-item-changed');
           }
+        },
+        cancelAction: function() {
+          this.editing = false;
+        },
+        itemChangeAction: function() {
+          this.fire('td-item-changed');
+        },
+        destroyAction: function() {
+          this.fire('td-destroy-item', this.item);
         }
-      },
-      cancelAction: function() {
-        this.editing = false;
-      },
-      itemChangeAction: function() {
-        this.fire('td-item-changed');
-      },
-      destroyAction: function() {
-        this.fire('td-destroy-item', this.item);
-      }
-    });
+      });
+    })();
   </script>
-</element>
+</polymer-element>

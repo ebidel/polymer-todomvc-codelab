@@ -4,9 +4,9 @@
   2. Bind innerText of <label> to item.title.
 -->
 
-<element name="td-item" extends="li">
-  <link rel="stylesheet" href="td-item.css">
+<polymer-element name="td-item" extends="li">
   <template>
+    <link rel="stylesheet" href="td-item.css">
     <div class="view">
       <input type="checkbox" class="toggle">
       <label></label>
@@ -14,6 +14,7 @@
     </div>
   </template>
   <script>
-    Polymer.register(this);
+    Polymer('td-item', {
+    });
   </script>
-</element>
+</polymer-element>

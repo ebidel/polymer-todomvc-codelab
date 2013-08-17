@@ -12,23 +12,24 @@ html, body {
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
-  background: #eaeaea url('../components/todomvc-common/bg.png');
+  background: #eaeaea url('../bower_components/todomvc-common/bg.png');
   color: #4d4d4d;
   font-weight: 300;
   padding: 2em 5em;
 }
 body > header {
   text-align: center;
-  margin-bottom: 4em;
+  margin-bottom: 3em;
 }
 h1, h2 {
-font-weight: inherit;
+  font-weight: inherit;
 }
 h1 {
-  font-size: 70px;
+  font-size: 50px;
   color: #b3b3b3;
   color: rgba(255, 255, 255, 0.3);
   text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1em;
 }
 a {
   color: #a6a6a6;
@@ -42,6 +43,9 @@ header a {
   text-decoration: none;
   color: inherit;
   text-shadow: inherit;
+}
+header h2 a:hover {
+  text-decoration: underline;
 }
 ul {
   list-style: none;
@@ -65,15 +69,15 @@ section {
 <body>
 
 <header>
-  <h1><a href="http://www.polymer-project.org">Polymer</a></h1>
-  <h2><a href="https://github.com/Polymer/todomvc">TodoMVC</a> <a href="http://goo.gl/lwrKK">Codelab</a></h2>
+  <h1><a href="http://www.polymer-project.org">Polymer</a> | <a href="https://github.com/Polymer/todomvc">TodoMVC</a></h1>
+  <h2>&#187; <a href="http://goo.gl/lwrKK">Start the codelab</a> &#171;</h2>
 </header>
 
 <div>
 <section>
-  <p>Codelab walkthrough: <a href="http://goo.gl/lwrKK">Start it here</a></p>
+  <h3>Resources</h3>
   <p>Github project: <a href="https://github.com/Polymer/todomvc">todomvc</a></p>
-  <p>Presentation: <a href="http://goo.gl/uwDOW" target="_blank">Introduction to Polymer</a></p>
+  <p>Presentation: <a href="http://goo.gl/uwDOW" target="_blank">Intro to Polymer</a></p>
   <p>Documentation: <a href="http://www.polymer-project.org">polymer-project.org</a></p>
 </section>
 <section>
@@ -101,6 +105,6 @@ section {
 </section>
 </div>
 
-<!-- <script src="../components/polymer/polymer.min.js"></script> -->
+<!-- <script src="../bower_components/polymer/polymer.min.js"></script> -->
 </body>
 </html>

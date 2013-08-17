@@ -1,3 +1,11 @@
+<!--
+1. Use an HTML Import to import td-model.html
+2. Declare <td-model> above <td-todos>.
+3. Connect <td-model> to <td-todos>
+   - give <td-model> an id. 
+   - set <td-todos>'s "modelId" attribute to the id of <td-model>.
+-->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,12 +14,14 @@
     <title>Polymer • TodoMVC</title>
     <link rel="stylesheet" href="../../app/app.css">
     <link rel="import" href="elements/td-todos.html">
-    <script src="../../components/polymer/polymer.min.js"></script>
+    <script src="../../bower_components/polymer/polymer.min.js"></script>
   </head>
   <body>
     <header>
       <h1>todos</h1>
     </header>
+    <!-- 2. Declare <td-model>. Give it an id -->
+    <!-- 3. Set <td-todos>'s "modelId" attribute to the id of <td-model> -->
     <td-todos></td-todos>
     <footer id="info">
       <p>Double-click to edit a todo</p>

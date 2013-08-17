@@ -1,6 +1,6 @@
-<element name="td-todos">
-  <link rel="stylesheet" href="td-todos.css">
+<polymer-element name="td-todos">
   <template>
+    <link rel="stylesheet" href="td-todos.css">
     <section id="todoapp">
       <header id="header">
         <input id="new-todo" placeholder="What needs to be done?" autofocus>
@@ -13,6 +13,7 @@
     </section>
   </template>
   <script>
-    Polymer.register(this);
+    Polymer('td-todos', {
+    });
   </script>
-</element>
+</polymer-element>

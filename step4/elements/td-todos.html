@@ -2,71 +2,77 @@
 TODO
 1. Hide <section id="main"> and <footer id="footer"> when there are no items.
    Do this by conditionally applying the hidden attribute.
-   Hint: The expression to use is $.model.items.length == 0.
-2. Hide <button id="clear-completed"> when the model's .completedCount == 0.
-   Use automatic node finding  ($.model.completedCount) to form the expression.
+   Hint: The expression to use is model.items.length == 0.
+2. Hide <button id="clear-completed"> when the model.completedCount == 0.
 3. Hook up the <input id="toggle-all" type="checkbox">
    - add an on-change handler that calls toggleAllCompletedAction().
-   - check this checkbox when all items are complete. Use automatic node finding 
-     ($.model.allCompleted) to form the expression.
+   - check the checkbox when all items are complete. You can use model.allCompleted
+     to form the expression.
 4. Fill in the itemChangedAction() and clearCompletedAction() methods.
 -->
 
+<link rel="import" href="td-input.html">
 <link rel="import" href="td-item.html">
-<link rel="import" href="td-model.html">
 
-<element name="td-todos">
-  <link rel="stylesheet" href="td-todos.css">
+<polymer-element name="td-todos" attributes="modelId">
   <template>
-    <td-model id="model" items="{{items}}"></td-model>
+  <link rel="stylesheet" href="td-todos.css">
     <section id="todoapp">
       <header id="header">
         <input id="new-todo" placeholder="What needs to be done?" autofocus on-keyup="keyAction">
       </header>
-      <!-- TODO: conditionally hide #main based on $.model.items.length -->
+      <!-- TODO: conditionally hide #main based on model.items.length -->
       <section id="main">
         <input id="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list" on-td-item-changed="itemChangedAction" on-td-destroy-item="destroyItemAction">
-          <template repeat="{{items}}">
+          <!-- TODO: repeat on the model's .filtered items. -->
+          <template repeat="{{model.items}}">
             <li is="td-item" item="{{}}"></li>
           </template>
         </ul>
       </section>
-      <!-- TODO: conditionally hide #footer based on $.model.items.length -->
+      <!-- TODO: conditionally hide #footer based on model.items.length -->
       <footer id="footer">
-        <span id="todo-count"><strong>{{$.model.activeCount}}</strong> {{$.model.activeCount == 1 ? 'item' : 'items'}} left</span>
-        <button id="clear-completed" on-click="clearCompletedAction">Clear completed ({{$.model.completedCount}})</button>
+        <span id="todo-count"><strong>{{model.activeCount}}</strong> {{model.activeCount == 1 ? 'item' : 'items'}} left</span>
+        <!-- TODO: Hide #clear-completed when the mode's .completedCount is 0. -->
+        <button id="clear-completed" on-click="clearCompletedAction">Clear completed ({{model.completedCount}})</button>
       </footer>
     </section>
   </template>
   <script>
-    var ENTER_KEY = 13;
-    var ESC_KEY = 27;
-    Polymer.register(this, {
-      keyAction: function(e, detail, sender) {
-        switch (e.keyCode) {
-          case ENTER_KEY:
-            this.$.model.newItem(sender.value);
-            // when polyfilling Object.observe, make sure we update immediately
-            Platform.flush();
-          case ESC_KEY: 
-            sender.value = '';
-            break;
+    (function() {
+      var ENTER_KEY = 13;
+      var ESC_KEY = 27;
+      Polymer('td-todos', {
+        modelIdChanged: function() {
+          this.model = document.querySelector('#' + this.modelId);
+        },
+        routeChanged: function() {
+          this.model && (this.model.filter = this.route);
+        },
+        addTodoAction: function() {
+          this.model.newItem(this.$['new-todo'].value);
+          // when polyfilling Object.observe, make sure we update immediately
+          Platform.flush();
+          this.$['new-todo'].value = '';
+        },
+        cancelAddTodoAction: function() {
+          this.$['new-todo'].value = '';
+        },
+        itemChangedAction: function() {
+          // TODO: tell <td-model> items changed. It has a method for this!
+        },
+        destroyItemAction: function(e, detail) {
+          this.model.destroyItem(detail);
+        },
+        toggleAllCompletedAction: function(e, detail, sender) {
+          this.model.setItemsCompleted(sender.checked);
+        },
+        clearCompletedAction: function() {
+          // TODO: clear items in <td-model>. It has a method for this!
         }
-      },
-      itemChangedAction: function() {
-        // TODO: call <td-model> items changed. 
-      },
-      destroyItemAction: function(e, detail) {
-        this.$.model.destroyItem(detail);
-      },
-      toggleAllCompletedAction: function(e, detail, sender) {
-        this.$.model.setItemsCompleted(sender.checked);
-      },
-      clearCompletedAction: function() {
-        // TODO: clear items in <td-model>.
-      }
-    });
+      });
+    })();
   </script>
-</element>
+</polymer-element>
