@@ -26,7 +26,6 @@ TODO
         <input id="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list" on-td-item-changed="itemChangedAction" on-td-destroy-item="destroyItemAction">
-          <!-- TODO: repeat on the model's .filtered items. -->
           <template repeat="{{model.items}}">
             <li is="td-item" item="{{}}"></li>
           </template>
