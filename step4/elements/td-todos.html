@@ -23,6 +23,8 @@ TODO
       </header>
       <!-- TODO: conditionally hide #main based on model.items.length -->
       <section id="main">
+        <!-- TODO: Add an on-change handler to #toggle-all that calls toggleAllCompletedAction() -->
+        <!-- TODO: Check #toggle-all when all items are complete. Hint: use model.allCompleted to form the expression -->
         <input id="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list" on-td-item-changed="itemChangedAction" on-td-destroy-item="destroyItemAction">
