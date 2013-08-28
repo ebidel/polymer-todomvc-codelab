@@ -35,7 +35,7 @@ TODO
       <!-- TODO: conditionally hide #footer based on model.items.length -->
       <footer id="footer">
         <span id="todo-count"><strong>{{model.activeCount}}</strong> {{model.activeCount == 1 ? 'item' : 'items'}} left</span>
-        <!-- TODO: Hide #clear-completed when the mode's .completedCount is 0. -->
+        <!-- TODO: Hide #clear-completed when the model's .completedCount is 0. -->
         <button id="clear-completed" on-click="clearCompletedAction">Clear completed ({{model.completedCount}})</button>
       </footer>
     </section>
