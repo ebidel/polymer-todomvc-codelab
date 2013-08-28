@@ -19,14 +19,15 @@ TODO
   <link rel="stylesheet" href="td-todos.css">
     <section id="todoapp">
       <header id="header">
-        <input id="new-todo" placeholder="What needs to be done?" autofocus on-keyup="keyAction">
+        <input is="td-input" id="new-todo" placeholder="What needs to be done?" autofocus on-td-input-commit="addTodoAction" on-td-input-cancel="cancelAddTodoAction">
       </header>
       <!-- TODO: conditionally hide #main based on model.items.length -->
       <section id="main">
+        <!-- TODO: Add an on-change handler to #toggle-all that calls toggleAllCompletedAction() -->
+        <!-- TODO: Check #toggle-all when all items are complete. Hint: use model.allCompleted to form the expression -->
         <input id="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list" on-td-item-changed="itemChangedAction" on-td-destroy-item="destroyItemAction">
-          <!-- TODO: repeat on the model's .filtered items. -->
           <template repeat="{{model.items}}">
             <li is="td-item" item="{{}}"></li>
           </template>
@@ -35,7 +36,7 @@ TODO
       <!-- TODO: conditionally hide #footer based on model.items.length -->
       <footer id="footer">
         <span id="todo-count"><strong>{{model.activeCount}}</strong> {{model.activeCount == 1 ? 'item' : 'items'}} left</span>
-        <!-- TODO: Hide #clear-completed when the mode's .completedCount is 0. -->
+        <!-- TODO: Hide #clear-completed when the model's .completedCount is 0. -->
         <button id="clear-completed" on-click="clearCompletedAction">Clear completed ({{model.completedCount}})</button>
       </footer>
     </section>
