@@ -20,3 +20,5 @@ The actual app code can be found at https://github.com/Polymer/todomvc/.
         mv codelab/app.yaml .
 
 4. Start a web server in the `todomvc` folder, open [ http://localhost:PORT/codelab/](http://localhost:<PORT>/codelab/). The codelab resources are there. Alternatively, you can read through it at http://goo.gl/lwrKK.
+
+[![Analytics](https://ga-beacon.appspot.com/UA-46812528-1/ebidel/polymer-todomvc-codelab/README)](https://github.com/igrigorik/ga-beacon)
